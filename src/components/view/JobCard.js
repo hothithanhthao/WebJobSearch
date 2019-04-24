@@ -1,27 +1,27 @@
 import React from 'react'
-
+import Radium, { Style } from 'radium';
 
 const Logo = (props) => {
 	return (
-	  <div style={style.logo}>
+	  <div style={style.circleLogo}>
 		  <h6>{props.name}</h6>
 	  </div>
   )
 }
 
-export default (props) => {
+const JobCard = (props) => {
 	const job = props
-  const getMonth = (date) => new Date().getMonth()
+  const getMonth = (date) => new Date().getMonth()+1
 	const getDay = (date) => new Date().getDate()
 	const isLogo = job.logo_url
 	return (
-		<div style={style.jobPost}>
-			<div style={{width:200, textAlign:'center',marginTop: 16}}>	{isLogo ? <img width="80" src={job.logo_url} alt="logo"/> : <Logo name={job.company_name}/>}</div>
-      <div style={{width: 580}}>
+		<a style={style.jobPost} href={"https://duunitori.fi/tyopaikat/tyo/"+job.slug}>
+			<div style={style.logo}>	{isLogo ? <img width="80" src={job.logo_url} alt="logo"/> : <Logo name={job.company_name}/>}</div>
+      <div style={{width: 700}}>
         <h3>{job.heading}</h3>
         <p style={style.text}>{job.area_name}{" - Julkaistu"} {" "}{getDay(job.date_posted)}{"."}{getMonth(job.date_posted)}{"."}</p>
       </div>
-		</div>
+		</a>
 	)
 
 }
@@ -32,20 +32,35 @@ const style = {
 		background: '#ffff',
 		border: '1px solid #ebf0f2',
     display:"flex",flexDirection:"row",
-    width: 800, height: "100%"
+    width: "60%", height: "100%",
+    minWidth: 350,
+    textDecoration: 'none',
+    color:'black',
+    ":hover": {
+      background: "#f9fffd"
+    }
 	
 	},
-	logo:{
+	circleLogo:{
 		padding: 6,
 		background: '#ebf0f2',
 		color:'#3e3e41',
 		border: '1px solid #ddd',
-    width: 80, height: 80, borderRadius: 80,
+    width: 70, height: 70, borderRadius: 70,
     textAlign: "center",
-    marginLeft: 50
+    
   },
   text:{
     color: '#9e9ea0',
     fontSize: 15
+  },
+  logo:{
+    width:200, 
+    marginTop: 16,
+    display: 'flex',  
+		justifyContent:'center', 
+		alignItems:'center'
   }
 }
+
+export default Radium(JobCard);

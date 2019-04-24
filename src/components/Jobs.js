@@ -29,13 +29,12 @@ export default class Jobs extends React.Component {
       <div> 
         <Header/>
         <h2 style={style.title}>Avoimet työpaikat Harjoittelija</h2>
-        <div style={{ marginLeft: 50}}>
+        <div style={{ marginLeft: "5%"}}>
           {this.state.jobs.slice(0,8).map((job) => (
-            <JobCard heading={job.heading} area_name={job.area_name} logo_url={job.logo_url} date_posted={job.date_posted} company_name={job.company_name}/>
+            <JobCard heading={job.heading} area_name={job.area_name} logo_url={job.logo_url} date_posted={job.date_posted} company_name={job.company_name} slug={job.slug}/>
           ))}
         </div>
-        
-        <h4 style={style.text}><a style={style.linkText} href="https://duunitori.fi/tyopaikat/?haku=harjoittelija&alue=&order_by=date_posted">NÄYTÄ LISÄÄ TYÖAIKKOJA &#9002;</a></h4>
+         <h4 style={style.text}><a style={style.linkText} href="https://duunitori.fi/tyopaikat/?haku=harjoittelija&alue=&order_by=date_posted">NÄYTÄ LISÄÄ TYÖAIKKOJA &#9002;</a></h4>
       </div>
 
     )
@@ -49,7 +48,7 @@ const style = {
   },
   text:{
     marginBottom: 150,
-    marginLeft: 350,
+    marginLeft: "25%",
   },
   linkText:{
     color: '#01b0a5',

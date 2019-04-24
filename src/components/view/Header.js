@@ -14,11 +14,12 @@ const style = {
 	headerStyle:{
 		height: 73,
 		background:"#001e43",
+		display: 'flex',  
+		justifyContent:'center', 
+		alignItems:'center'
 
 	},
 	logo:{
-		marginLeft: 750,
-		marginTop: 20,
 		width: 130, 
 	}
 }
